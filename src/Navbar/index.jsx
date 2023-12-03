@@ -8,8 +8,8 @@ const Navbar = () => {
 
     const logout = () => {
         localStorage.removeItem("accessToken")
-        // navigate("/login")
-        // localStorage.clear
+        navigate("/login")
+        // localStorage.clear();
     }
     
     const handleClick = () => {
@@ -26,11 +26,14 @@ const Navbar = () => {
             <Link className="text-decoration-none text-white" to={"/"}>
                 <p>Home</p>
             </Link>
-            <Link onClick={() => accessToken ? navigate('/') : navigate('/login')} className="text-decoration-none text-white">
-                <p> {accessToken ? "Logout" : "Login"} </p>
+            <Link className="text-decoration-none text-white" to={"/new-menu"}>
+                <p>Create Menu</p>
             </Link>
+            {/* <Link onClick={() => accessToken ? navigate('/') : navigate('/login')} className="text-decoration-none text-white">
+                <p> {accessToken ? "Logout" : "Login"} </p>
+            </Link> */}
             { accessToken? 
-                (<p onClick={logout}>Logout</p> ) : ( <Link><p>Login</p></Link> )
+                ( <Link className="text-decoration-none"><p className="text-white" onClick={logout}>Logout</p></Link> ) : ( <Link to={"/login"}  ><p>Login</p></Link> )
             }
         </div>
     )
